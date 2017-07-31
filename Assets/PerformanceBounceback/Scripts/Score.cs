@@ -14,8 +14,16 @@ public class Score : MonoBehaviour
         text = GetComponentInChildren<Text>();
     }
 
-    // Update is called once per frame
+    private int oldScore;
     void Update()
+    {
+        if (gameManager.score != oldScore)
+        {
+            oldScore = gameManager.score;
+            ChangeScoreUI();
+        }
+    }
+    private void ChangeScoreUI()
     {
         text.text = "Score: " + gameManager.score.ToString();
     }
